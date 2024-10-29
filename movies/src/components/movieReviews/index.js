@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useContext} from "react";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
@@ -11,12 +11,15 @@ import { getMovieReviews } from "../../api/tmdb-api";
 import { excerpt } from "../../util";
 import { useQuery } from "react-query";
 import Spinner from '../spinner';
+import { MoviesContext } from "../../contexts/moviesContext";
 
 export default function MovieReviews({ movie }) {
+  const context = useContext(MoviesContext);
   const { data , error, isLoading, isError } = useQuery(
     ["reviews", { id: movie.id }],
     getMovieReviews
   );
+  //console.log(context.myReviews)
   
   if (isLoading) {
     return <Spinner />;
@@ -27,6 +30,7 @@ export default function MovieReviews({ movie }) {
   }
   
   const reviews = data.results;
+  //console.log(reviews);
 
   return (
     <TableContainer component={Paper}>
