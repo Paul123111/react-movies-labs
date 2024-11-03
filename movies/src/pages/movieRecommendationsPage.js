@@ -5,6 +5,7 @@ import PageTemplate from "../components/templateMoviePage";
 import { getMovieRecommendations } from '../api/tmdb-api'
 import { useQuery } from "react-query";
 import Spinner from '../components/spinner'
+import MovieRecommendations from "../components/movieRecommendations";
 //import useMovie from "../hooks/useMovie";
 
 const MovieRecommendationsPage = (props) => {
@@ -26,9 +27,7 @@ const MovieRecommendationsPage = (props) => {
     <>
       {movie ? (
         <>
-          <PageTemplate movie={movie}>
-            <MovieDetails movie={movie} />
-          </PageTemplate>
+          <MovieRecommendations recommendations={movie} />
         </>
       ) : (
         <p>Waiting for movie details</p>
