@@ -85,7 +85,7 @@ export const getMovieRecommendations = (args) => {
   //console.log(args)
   const [, idPart] = args.queryKey;
   const { id } = idPart;
-  console.log(id)
+  //console.log(id)
   return fetch(
     `https://api.themoviedb.org/3/movie/${id}/recommendations?api_key=${process.env.REACT_APP_TMDB_KEY}&language=en-US&page=1`
   ).then((response) => {

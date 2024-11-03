@@ -7,11 +7,12 @@ import { useQuery } from "react-query";
 import Spinner from '../components/spinner'
 import MovieRecommendations from "../components/movieRecommendations";
 //import useMovie from "../hooks/useMovie";
+import AddToFavoritesIcon from '../components/cardIcons/addToFavorites';
 
 const MovieRecommendationsPage = (props) => {
   const { id } = useParams();
   const { data: movie, error, isLoading, isError } = useQuery(
-    ["movie", { id: id }],
+    ["recommendations", { id: id }],
     getMovieRecommendations
   );
 
@@ -27,7 +28,13 @@ const MovieRecommendationsPage = (props) => {
     <>
       {movie ? (
         <>
-          <MovieRecommendations recommendations={movie} />
+          <MovieRecommendations 
+          recommendations={movie} 
+          title="Recommend Movies"
+          action={(movie) => {
+            return <AddToFavoritesIcon movie={movie} />
+          }}
+           />
         </>
       ) : (
         <p>Waiting for movie details</p>
