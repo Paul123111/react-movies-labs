@@ -88,12 +88,16 @@ const MovieDetails = ({ movie, credits }) => {  // Don't miss this!
         </li>
         {credits.cast.map((g) => (
           <li key={g.name}>
-            <Chip label={g.name} sx={{...chip}} />
+            <Link to={`/person/${g.id}`}>
+              <Chip label={g.name} sx={{...chip}} />
+            </Link>
           </li>
         ))}
         {credits.crew.map((g) => (
           <li key={g.name}>
-            <Chip label={g.name} sx={{...chip}} />
+            <Link to={`/person/${g.id}`}>
+              <Chip label={g.name} sx={{...chip}} />
+            </Link>
           </li>
         ))}
       </Paper>
