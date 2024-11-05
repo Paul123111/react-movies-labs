@@ -17,9 +17,6 @@ const chip = { margin: 0.5 };
 const MovieRecommendations = ({ recommendations, title, action }) => {  // Don't miss this!
 
   const movies = recommendations.results;
-  const [nameFilter, setNameFilter] = useState("");
-  const [genreFilter, setGenreFilter] = useState("0");
-  const genreId = Number(genreFilter);
 
   return (
     <>
