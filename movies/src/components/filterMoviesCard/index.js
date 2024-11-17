@@ -13,6 +13,7 @@ import img from '../../images/pexels-dziana-hasanbekava-5480827.jpg'
 import { getGenres } from "../../api/tmdb-api";
 import { useQuery } from "react-query";
 import Spinner from '../spinner'
+import { MoviesContext } from "../../contexts/moviesContext";
 
 const formControl = 
   {
@@ -24,6 +25,7 @@ const formControl =
 export default function FilterMoviesCard(props) {
 
   const { data, error, isLoading, isError } = useQuery("genres", getGenres);
+  //const {movies, error2, isLoading2, isError2} = useQuery("m")
 
   if (isLoading) {
     return <Spinner />;
@@ -48,6 +50,10 @@ export default function FilterMoviesCard(props) {
 
   const handleGenreChange = (e) => {
     handleChange(e, "genre", e.target.value);
+  };
+
+  const handleMinRatingChange = (e, props) => {
+    handleChange(e, "ratings", e.target.value);
   };
 
   return (
@@ -88,6 +94,34 @@ export default function FilterMoviesCard(props) {
             })}
           </Select>
         </FormControl>
+
+        <FormControl sx={{...formControl}}>
+          <InputLabel id="min-ratings-label"></InputLabel>
+          <TextField
+            labelId="min-ratings-label"
+            id="min-ratings-select"
+            helperText="Min Rating"
+            defaultValue="0"
+            value={props.ratingsFilter}
+            onChange={handleMinRatingChange}
+          >
+            
+          </TextField>
+        </FormControl>
+
+        {/* <FormControl sx={{...formControl}}>
+          <InputLabel id="max-ratings-label"></InputLabel>
+          <TextField
+            labelId="max-ratings-label"
+            id="max-ratings-select"
+            defaultValue="0"
+            helperText="Max Rating"
+            value={props.genreFilter}
+            onChange={handleGenreChange}
+          >
+          </TextField>
+        </FormControl> */}
+
       </CardContent>
       <CardMedia
         sx={{ height: 300 }}

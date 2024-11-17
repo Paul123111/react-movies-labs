@@ -9,9 +9,15 @@ function MovieListPageTemplate({ movies, title, action }) {
   const [genreFilter, setGenreFilter] = useState("0");
   const genreId = Number(genreFilter);
 
+  const [ratingsFilter, setRatingsFilter] = useState("0");
+  const ratingsID = Number(ratingsFilter);
+
   let displayedMovies = movies
     .filter((m) => {
       return m.title.toLowerCase().search(nameFilter.toLowerCase()) !== -1;
+    })
+    .filter((m) => {
+      return m.vote_average > ratingsID;
     })
     .filter((m) => {
       return genreId > 0 ? m.genre_ids.includes(genreId) : true;
@@ -19,6 +25,7 @@ function MovieListPageTemplate({ movies, title, action }) {
 
   const handleChange = (type, value) => {
     if (type === "name") setNameFilter(value);
+    else if (type === "ratings") setRatingsFilter(value);
     else setGenreFilter(value);
   };
 
@@ -37,6 +44,7 @@ function MovieListPageTemplate({ movies, title, action }) {
             onUserInput={handleChange}
             titleFilter={nameFilter}
             genreFilter={genreFilter}
+            ratingsFilter={ratingsFilter}
           />
         </Grid>
         <MovieList action={action} movies={displayedMovies}></MovieList>

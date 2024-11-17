@@ -2,7 +2,9 @@
 // 1. get credits for movie - DONE
 // 2. get movie to list credits - DONE
 // 3. get movie to link people to personPage - DONE
-// 4. create personPage
+// 4. create personPage - partially done, implement image
+// 5. add movie credits to person
+// 6. link movie credits to movie
 
 import { Typography } from "@mui/material";
 import React from "react";
@@ -16,11 +18,12 @@ const PersonDetails = ({ person }) => {
       <p>Biography: {person.biography ? person.biography : "None Specified"}</p>
       <p>Date of Birth: {person.birthday ? person.birthday : "None Specified"}</p>
       <p>Died on: {person.deathday ? person.deathday : "Currently Alive"}</p>
-      <p>Gender: {person.gender == 0 ? "Unspecified" : person.gender == 1 ? "Female" : person.gender == 2 ? "Male" : "Non-Binary"}</p>
+      <p>Gender: {person.gender === 0 ? "Unspecified" : person.gender === 1 ? "Female" : person.gender === 2 ? "Male" : "Non-Binary"}</p>
       <p>Homepage: {person.homepage ? person.homepage : "None Specified"}</p>
       <p>Known for department: {person.known_for_department ? person.known_for_department : "None Specified"}</p>
       <p>Born in: {person.place_of_birth ? person.place_of_birth : "None Specified"}</p>
-      <p>Popularity: {person.popularity} followers</p>
+      <p>Popularity: {person.popularity}</p>
+      <p>Image: {person.profile_path}</p>
     </Typography>
   );
 };
