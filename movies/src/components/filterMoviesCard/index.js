@@ -13,7 +13,6 @@ import img from '../../images/pexels-dziana-hasanbekava-5480827.jpg'
 import { getGenres } from "../../api/tmdb-api";
 import { useQuery } from "react-query";
 import Spinner from '../spinner'
-import { MoviesContext } from "../../contexts/moviesContext";
 
 const formControl = 
   {
@@ -54,6 +53,10 @@ export default function FilterMoviesCard(props) {
 
   const handleMinRatingChange = (e, props) => {
     handleChange(e, "ratings", e.target.value);
+  };
+
+  const handleSortChange = (e) => {
+    handleChange(e, "sort", e.target.value);
   };
 
   return (
@@ -121,6 +124,30 @@ export default function FilterMoviesCard(props) {
           >
           </TextField>
         </FormControl> */}
+
+        <FormControl sx={{...formControl}}>
+          <InputLabel id="sort-label">Sort By</InputLabel>
+          <Select
+            labelId="sort-label"
+            id="sort-select"
+            defaultValue=""
+            value={props.sortBy}
+            onChange={handleSortChange}
+          >
+            <MenuItem key="popularity" value="popularity">
+              Popularity
+            </MenuItem>
+            <MenuItem key="nameAZ" value="nameAZ">
+              Name (A-Z)
+            </MenuItem>
+            <MenuItem key="nameZA" value="nameZA">
+              Name (Z-A)
+            </MenuItem>
+            <MenuItem key="ratings" value="ratings">
+              Highest Rating
+            </MenuItem>
+          </Select>
+        </FormControl>
 
       </CardContent>
       <CardMedia
