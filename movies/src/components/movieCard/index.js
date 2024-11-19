@@ -15,6 +15,7 @@ import Grid from "@mui/material/Grid2";
 import img from '../../images/film-poster-placeholder.png'
 import Avatar from '@mui/material/Avatar';
 import { MoviesContext } from "../../contexts/moviesContext";
+import "../../css/style.css";
 
 export default function MovieCard({ movie, action }) { 
   const { favorites, addToFavorites } = useContext(MoviesContext);
@@ -22,7 +23,7 @@ export default function MovieCard({ movie, action }) {
   if (favorites.find((id) => id === movie.id)) {
     movie.favorite = true;
   } else {
-    movie.favorite = false
+    movie.favorite = false;
   }
 
   const handleAddToFavorite = (e) => {
@@ -31,8 +32,8 @@ export default function MovieCard({ movie, action }) {
   };
 
   return (
-    <Card>
-      <CardHeader
+    <Card className="darkCard">
+      <CardHeader className="darkCard"
         avatar={
           movie.favorite ? (
             <Avatar sx={{ backgroundColor: 'red' }}>
@@ -46,7 +47,7 @@ export default function MovieCard({ movie, action }) {
           </Typography>
         }
       />
-      <CardMedia
+      <CardMedia className="darkCard"
         sx={{ height: 500 }}
         image={
           movie.poster_path
@@ -54,7 +55,7 @@ export default function MovieCard({ movie, action }) {
             : img
         }
       />
-      <CardContent>
+      <CardContent className="darkCard">
         <Grid container>
           <Grid size={{xs: 6}}>
             <Typography variant="h6" component="p">

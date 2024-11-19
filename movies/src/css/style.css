@@ -1,0 +1,9 @@
+.darkCard {
+  color: aliceblue;
+  background-color: #222222;
+}
+
+.lightCard {
+  color: black;
+  background-color: white;
+}

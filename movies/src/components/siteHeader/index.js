@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState} from "react";
 import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
@@ -11,6 +11,7 @@ import { useNavigate } from "react-router-dom";
 import { styled } from '@mui/material/styles';
 import { useTheme } from "@mui/material/styles";
 import useMediaQuery from "@mui/material/useMediaQuery";
+import ThemeSwitch from "../themeSwitch";
 
 const Offset = styled('div')(({ theme }) => theme.mixins.toolbar);
 
@@ -83,6 +84,7 @@ const SiteHeader = ({ history }) => {
                       {opt.label}
                     </MenuItem>
                   ))}
+                  <ThemeSwitch />
                 </Menu>
               </>
             ) : (
@@ -96,6 +98,9 @@ const SiteHeader = ({ history }) => {
                     {opt.label}
                   </Button>
                 ))}
+
+                <ThemeSwitch />
+              
               </>
             )}
         </Toolbar>
