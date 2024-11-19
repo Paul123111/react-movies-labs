@@ -30,6 +30,7 @@ function MovieListPageTemplate({ movies, title, action }) {
         case "nameAZ": return m.title > n.title ? 1 : -1;
         case "nameZA": return m.title < n.title ? 1 : -1;
         case "ratings": return m.vote_average < n.vote_average ? 1 : -1;
+        case "releaseDate": return m.date > n.date ? 1 : -1;
         default: return m.popularity < n.popularity ? 1 : -1;
       }
     });

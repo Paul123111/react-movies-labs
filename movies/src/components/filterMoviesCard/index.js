@@ -101,10 +101,9 @@ export default function FilterMoviesCard(props) {
         <FormControl sx={{...formControl}}>
           <InputLabel id="min-ratings-label"></InputLabel>
           <TextField
-            labelId="min-ratings-label"
+            //labelId="min-ratings-label"
             id="min-ratings-select"
             helperText="Min Rating"
-            defaultValue="0"
             value={props.ratingsFilter}
             onChange={handleMinRatingChange}
           >
@@ -145,6 +144,9 @@ export default function FilterMoviesCard(props) {
             </MenuItem>
             <MenuItem key="ratings" value="ratings">
               Highest Rating
+            </MenuItem>
+            <MenuItem key="releaseDate" value="releaseDate">
+              Latest Movies
             </MenuItem>
           </Select>
         </FormControl>

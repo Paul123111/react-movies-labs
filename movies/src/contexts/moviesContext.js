@@ -40,7 +40,7 @@ const MoviesContextProvider = (props) => {
     }
     setPlaylist(newPlaylist)
   };
-  console.log(playlist);
+  //console.log(playlist);
 
   return (
     <MoviesContext.Provider
