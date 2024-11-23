@@ -19,7 +19,7 @@ export default function MovieReviews({ movie }) {
     ["reviews", { id: movie.id }],
     getMovieReviews
   );
-  //console.log(context.myReviews)
+  console.log(context.myReviews)
   
   if (isLoading) {
     return <Spinner />;

@@ -5,10 +5,10 @@ export const ThemeContext = React.createContext(true);
 const ThemeContextProvider = (props) => {
   const [theme, setTheme] = useState( {} )
 
-  const changeTheme = () => {
-    let newTheme = false;
+  const changeTheme = (newTheme) => {
+    // let newTheme = false;
 
-    theme ? newTheme = false : newTheme = true;
+    // theme ? newTheme = false : newTheme = true;
     
     setTheme({...theme, newTheme});
 

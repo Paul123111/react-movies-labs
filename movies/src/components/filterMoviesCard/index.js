@@ -167,3 +167,8 @@ export default function FilterMoviesCard(props) {
     </Card>
   );
 }
+
+// autocomplete maybe
+// for searching, use actors beginning with t in movies for example (typing into searchbar)
+// for responive UI, just make sure new features use responsive UI (labs do by default)
+// leave components that arent working in for extra marks
