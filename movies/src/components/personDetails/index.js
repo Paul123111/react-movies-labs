@@ -11,9 +11,21 @@ import React from "react";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
-import img from '../../images/film-poster-placeholder.png'
+import img from '../../images/blank-profile-picture.png';
+import { Link } from "react-router-dom";
+import Chip from "@mui/material/Chip";
 
-const PersonDetails = ({ person }) => {
+const PersonDetails = ({ person, credits }) => {
+
+  const root = {
+    display: "flex",
+    justifyContent: "center",
+    flexWrap: "wrap",
+    listStyle: "none",
+    padding: 1.5,
+    margin: 0,
+};
+const chip = { margin: 0.5 };
 
   return (
     <Card className="darkCard">
@@ -40,6 +52,18 @@ const PersonDetails = ({ person }) => {
             : img
         }
         />
+
+      <CardContent className="darkCard">
+        <Typography variant="h6" component="p">
+        {credits.cast.map((g) => (
+          <li key={g.name}>
+            <Link to={`/movies/${g.id}`}>
+              <Chip label={g.title} sx={{...chip}} />
+            </Link>
+          </li>
+        ))}
+          </Typography>
+        </CardContent>
         
       
     </Card>
