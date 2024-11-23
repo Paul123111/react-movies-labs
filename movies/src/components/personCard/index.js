@@ -12,33 +12,36 @@ import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import img from '../../images/blank-profile-picture.png' // credit: https://pixabay.com/vectors/blank-profile-picture-mystery-man-973460/
+import { Link } from "react-router-dom";
 
 const PersonCard = ({ person }) => {
 
   return (
-    <Card className="personCard">
-      <CardContent className="darkCard">
-        <Typography variant="h6" component="p">
-           {person.name}
-          </Typography>
-        </CardContent>
-        
-        <CardMedia className="darkCard"
-        sx={{ height: 300 }}
-        image={
-          person.profile_path
-            ? `https://image.tmdb.org/t/p/w500${person.profile_path}`
-            : img
-        }
-        />
-        
+    <Link to={`/person/${person.id}`}>
+      <Card className="personCard">
         <CardContent className="darkCard">
           <Typography variant="h6" component="p">
-           Popularity: {person.popularity}
-          </Typography>
-        </CardContent>
-      
-    </Card>
+            {person.name}
+            </Typography>
+          </CardContent>
+          
+          <CardMedia className="darkCard"
+          sx={{ height: 300 }}
+          image={
+            person.profile_path
+              ? `https://image.tmdb.org/t/p/w500${person.profile_path}`
+              : img
+          }
+          />
+          
+          <CardContent className="darkCard">
+            <Typography variant="h6" component="p">
+            Popularity: {person.popularity}
+            </Typography>
+          </CardContent>
+        
+      </Card>
+    </Link>
   );
 };
 

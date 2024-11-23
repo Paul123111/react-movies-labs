@@ -101,15 +101,25 @@ const MovieDetails = ({ movie, credits }) => {  // Don't miss this!
             </Link>
           </li>
         ))} */}
-          <Typography variant="h5" component="h3">
-            Cast
-          </Typography>
-          <div className="horizontalScroll">
-            {<PersonList people={credits.cast} className="horizontalScroll"></PersonList>}
-          </div>
       </Paper>
 
-      
+      <Paper>
+        <Typography variant="h5" component="h3">
+          Cast
+        </Typography>
+        <div className="horizontalScroll">
+          {<PersonList people={credits.cast} className="horizontalScroll"></PersonList>}
+        </div>
+      </Paper>
+
+      <Paper>
+        <Typography variant="h5" component="h3">
+          Cast
+        </Typography>
+        <div className="horizontalScroll">
+          {<PersonList people={credits.crew} className="horizontalScroll"></PersonList>}
+        </div>
+      </Paper>
 
       <Link to={`/movies/${movie.id}/recommendations`}>
         <Button variant="outlined" size="medium" color="primary">
