@@ -11,22 +11,20 @@ import React from "react";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
-import img from '../../images/film-poster-placeholder.png'
+import img from '../../images/blank-profile-picture.png' // credit: https://pixabay.com/vectors/blank-profile-picture-mystery-man-973460/
 
 const PersonCard = ({ person }) => {
 
   return (
-    <Card className="darkCard">
+    <Card className="personCard">
       <CardContent className="darkCard">
         <Typography variant="h6" component="p">
-          <p>Name: {person.name},</p>
-          <p>Known for department: {person.known_for_department ? person.known_for_department : "None Specified"},</p>
-          <p>From: {person.place_of_birth ? person.place_of_birth : "None Specified"}</p>
+           {person.name}
           </Typography>
         </CardContent>
         
         <CardMedia className="darkCard"
-        sx={{ height: 500 }}
+        sx={{ height: 300 }}
         image={
           person.profile_path
             ? `https://image.tmdb.org/t/p/w500${person.profile_path}`
@@ -34,6 +32,11 @@ const PersonCard = ({ person }) => {
         }
         />
         
+        <CardContent className="darkCard">
+          <Typography variant="h6" component="p">
+           Popularity: {person.popularity}
+          </Typography>
+        </CardContent>
       
     </Card>
   );

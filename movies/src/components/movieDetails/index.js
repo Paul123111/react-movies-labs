@@ -12,6 +12,7 @@ import Drawer from "@mui/material/Drawer";
 import MovieReviews from "../movieReviews";
 import LanguageIcon from '@mui/icons-material/Language';
 import Button from "@mui/material/Button";
+import PersonList from "../personList";
 
 const root = {
     display: "flex",
@@ -83,7 +84,7 @@ const MovieDetails = ({ movie, credits }) => {  // Don't miss this!
         component="ul" 
         sx={{...root}}
       >
-        <li>
+        {/* <li>
           <Chip label="Credits" sx={{...chip}} color="primary" />
         </li>
         {credits.cast.map((g) => (
@@ -99,8 +100,16 @@ const MovieDetails = ({ movie, credits }) => {  // Don't miss this!
               <Chip label={g.name} sx={{...chip}} />
             </Link>
           </li>
-        ))}
+        ))} */}
+          <Typography variant="h5" component="h3">
+            Cast
+          </Typography>
+          <div className="horizontalScroll">
+            {<PersonList people={credits.cast} className="horizontalScroll"></PersonList>}
+          </div>
       </Paper>
+
+      
 
       <Link to={`/movies/${movie.id}/recommendations`}>
         <Button variant="outlined" size="medium" color="primary">
