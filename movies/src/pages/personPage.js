@@ -6,6 +6,7 @@ import Spinner from '../components/spinner';
 import { useParams } from 'react-router-dom';
 import PersonListPageTemplate from "../components/templatePersonList";
 import AddToFavoritesIcon from "../components/cardIcons/addToFavorites";
+import PersonPageTemplate from "../components/templatePersonPage";
 
 const PersonPage = (props) => {
   const { id } = useParams();
@@ -35,8 +36,8 @@ const PersonPage = (props) => {
     <>
       {person && credits ? (
         <>
-          <PersonListPageTemplate 
-          people={person} 
+          <PersonPageTemplate 
+          person={person} 
           credits={credits} 
           action={(credit) => {
             return <AddToFavoritesIcon movie={credit} />

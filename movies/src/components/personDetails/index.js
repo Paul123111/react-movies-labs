@@ -50,15 +50,6 @@ const chip = { margin: 0.5 };
               <p>Popularity: {person.popularity}</p>
               </Typography>
             </CardContent>
-            
-            <CardMedia className="darkCard"
-            sx={{ height: 500 }}
-            image={
-              person.profile_path
-                ? `https://image.tmdb.org/t/p/w500${person.profile_path}`
-                : img
-            }
-            />
 
           <CardContent className="darkCard">
             <MovieScrollList movies={credits.cast} action={action}></MovieScrollList>
