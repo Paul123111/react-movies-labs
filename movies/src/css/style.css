@@ -57,3 +57,8 @@
   overflow-x: hidden;
   overflow-y: hidden;
 }
+
+.footer {
+  display: flex;
+  justify-content: center;
+}

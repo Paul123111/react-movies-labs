@@ -14,6 +14,25 @@ export const getMovies = () => {
   });
 };
 
+export const getMoviesPage = (args) => {
+  const [, pagePart] = args.queryKey;
+  const { page } = pagePart;
+  console.log(args);
+  return fetch(
+    `https://api.themoviedb.org/3/discover/movie?api_key=${process.env.REACT_APP_TMDB_KEY}&language=en-US&include_adult=false&include_video=false&page=${page}`
+  ).then((response) => {
+    if (!response.ok) {
+      return response.json().then((error) => {
+        throw new Error(error.status_message || "Something went wrong");
+      });
+    }
+    return response.json();
+  })
+  .catch((error) => {
+      throw error
+  });
+};
+
 export const getUpcomingMovies = () => {
   return fetch(
     `https://api.themoviedb.org/3/movie/upcoming?api_key=${process.env.REACT_APP_TMDB_KEY}&language=en-US&include_adult=false&include_video=false&page=1`
@@ -82,10 +101,10 @@ export const getMovie = (args) => {
 };
 
 export const getMovieRecommendations = (args) => {
-  //console.log(args)
+  console.log(args)
   const [, idPart] = args.queryKey;
   const { id } = idPart;
-  //console.log(id)
+  console.log(id)
   return fetch(
     `https://api.themoviedb.org/3/movie/${id}/recommendations?api_key=${process.env.REACT_APP_TMDB_KEY}&language=en-US&page=1`
   ).then((response) => {

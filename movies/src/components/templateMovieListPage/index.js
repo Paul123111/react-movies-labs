@@ -4,6 +4,7 @@ import FilterCard from "../filterMoviesCard";
 import MovieList from "../movieList";
 import Grid from "@mui/material/Grid2";
 import { Pagination } from "@mui/material";
+import { Link } from "react-router-dom";
 
 function MovieListPageTemplate({ movies, credits, title, action }) {
   const [nameFilter, setNameFilter] = useState("");
@@ -16,6 +17,9 @@ function MovieListPageTemplate({ movies, credits, title, action }) {
   const [sortBy, setSortBy] = useState("popularity");
 
   const [overviewFilter, setOverviewFilter] = useState("");
+
+  const [page, setPage] = useState("1");
+  const pageID = Number(page)
 
   let displayedMovies = movies
     .filter((m) => {
@@ -51,6 +55,11 @@ function MovieListPageTemplate({ movies, credits, title, action }) {
     else setOverviewFilter(value);
   };
 
+  const handlePageChange = (type, value) => {
+    console.log(type + ", " + value);
+    setPage(value);
+  };
+
   return (
     <>
       <Grid container>
@@ -76,7 +85,14 @@ function MovieListPageTemplate({ movies, credits, title, action }) {
         </Grid>
       </Grid>
 
-      <Pagination count={10} color="primary" />
+      <footer className="footer">
+        <Link to={`/movies/discover/${page}`}>
+          <Pagination count={10} color="primary" onChange={handlePageChange}>
+          
+          </Pagination>
+        </Link>
+      </footer>
+      
     </>
   );
 }
