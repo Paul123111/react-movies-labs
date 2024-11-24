@@ -4,26 +4,19 @@ import {Button} from "@mui/material";
 import { useForm } from "react-hook-form";
 import { useAuth } from "../contexts/authContext";
 import { useState } from "react";
-import { signInWithEmailAndPassword } from "firebase/auth";
+import { signInWithEmailAndPassword, signOut } from "firebase/auth";
 import { auth, app } from "../firebase/firebase";
 
 const LoginPage = (props) => {
 
-  const userLoggedIn = useAuth();
-
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [isSigningIn, setIsSigningIn] = useState(false);
 
-  // const onSubmit = async (e) => {
-  //   console.log("submitted");
-
-  //   e.preventDefault();
-  //   if(!isSigningIn) {
-  //     setIsSigningIn(true);
-  //     await doSignInWithEmailAndPassword(email, password);
-  //   }
-  // };
+  signOut(auth).then(() => {
+    // Sign-out successful.
+  }).catch((error) => {
+    // An error happened.
+  });
 
   const signIn = (e) => {
     e.preventDefault();
@@ -39,18 +32,6 @@ const LoginPage = (props) => {
     console.log(error);
   });
 }
-
-  // const defaultValues = {
-  //   email:"",
-  //   password:""
-  // };
-
-  // const {
-  //   control,
-  //   formState: { errors },
-  //   handleSubmit,
-  //   reset,
-  // } = useForm(defaultValues);
 
   return (
     <>

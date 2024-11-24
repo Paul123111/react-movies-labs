@@ -1,3 +1,4 @@
+// Credit - https://www.youtube.com/watch?v=VcsGDtpck6I
 import { Card } from "@mui/material";
 import {FormEvent, useContext} from "react";
 import {TextField} from "@mui/material";
@@ -11,7 +12,7 @@ import {Typography} from "@mui/material";
 import { MoviesContext } from "../contexts/moviesContext";
 import { auth, app } from "../firebase/firebase";
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
-
+import { useNavigate } from "react-router-dom";
 
 const SignUpPage = (props) => {
 
@@ -21,6 +22,7 @@ const SignUpPage = (props) => {
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const navigate = useNavigate('');
 
   const signUp = (e) => {
     e.preventDefault();
@@ -30,13 +32,14 @@ const SignUpPage = (props) => {
     // Signed in 
     const user = userCredential.user;
     console.log(userCredential);
+    navigate("/");
     // ...
   })
   .catch((error) => {
     console.log(error);
   });
   }
-  
+
   // const [isSigningIn, setIsSigningIn] = useState(false);
 
   // const onSubmit = async (e, email, password) => {

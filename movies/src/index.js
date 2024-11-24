@@ -1,6 +1,6 @@
 import React from "react";
 import { createRoot } from "react-dom/client";
-import { BrowserRouter, Route, Navigate, Routes } from "react-router-dom";
+import { BrowserRouter, Route, Navigate, Routes, useNavigate } from "react-router-dom";
 import HomePage from "./pages/homePage";
 import MoviePage from "./pages/movieDetailsPage";
 import FavoriteMoviesPage from "./pages/favoriteMoviesPage";
@@ -19,6 +19,7 @@ import ThemeContextProvider from "./contexts/themeContext";
 import WatchlistMoviesPage from "./pages/watchlistMoviesPage";
 import LoginPage from "./pages/loginPage";
 import SignUpPage from "./pages/signUpPage";
+import { auth } from "./firebase/firebase";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -30,7 +31,17 @@ const queryClient = new QueryClient({
   },
 });
 
+
 const App = () => {
+  
+  auth.onAuthStateChanged(function(user) {
+    if (user) {
+      // User is signed in.
+    } else {
+      <Navigate to="/login"></Navigate>
+    }
+  });
+
   return (
     <QueryClientProvider client={queryClient}>
       <BrowserRouter>
@@ -51,6 +62,7 @@ const App = () => {
             <Route path="/" element={<HomePage />} />
             <Route path="/login" element={<LoginPage/>} />
             <Route path="/signup" element={<SignUpPage/>} />
+            <Route path="/signout" element={auth.signOut()} />
             <Route path="*" element={ <Navigate to="/" /> } />
           </Routes>
         </MoviesContextProvider>
@@ -58,7 +70,7 @@ const App = () => {
       </BrowserRouter>
       <ReactQueryDevtools initialIsOpen={false} />
     </QueryClientProvider>
-  );
+  )
 };
 
 const rootElement = createRoot( document.getElementById("root") )

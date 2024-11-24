@@ -5,8 +5,20 @@ import { useQuery } from 'react-query';
 import Spinner from '../components/spinner';
 import AddToFavoritesIcon from '../components/cardIcons/addToFavorites'
 import AppPagination from "../components/appPagination";
+import { auth } from "../firebase/firebase";
+import { useNavigate } from "react-router-dom";
 
 const HomePage = (props) => {
+
+  auth.onAuthStateChanged(function(user) {
+    if (user) {
+      console.log("User is signed in.")
+    } else {
+      console.log("No User is signed in.")
+    }
+  });
+
+  //const navigate = useNavigate('');
 
   const [page, setPage] = useState(1);
 

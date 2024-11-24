@@ -31,6 +31,8 @@ const SiteHeader = ({ history }) => {
     { label: "Upcoming", path: "/movies/upcoming" },
     { label: "Trending", path: "/movies/trending/today" },
     { label: "Now Playing", path: "/movies/now-playing" },
+    { label: "Signup", path: "/signup" },
+    { label: "Login", path: "/login" },
   ];
 
   const handleMenuSelect = (pageURL) => {
@@ -85,7 +87,7 @@ const SiteHeader = ({ history }) => {
                       {opt.label}
                     </MenuItem>
                   ))}
-                  <ThemeSwitch />
+                  {/* <ThemeSwitch /> */}
                 </Menu>
               </>
             ) : (
@@ -100,7 +102,7 @@ const SiteHeader = ({ history }) => {
                   </Button>
                 ))}
 
-                <ThemeSwitch />
+                {/* <ThemeSwitch /> */}
               
               </>
             )}
