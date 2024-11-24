@@ -16,6 +16,7 @@ import { Link } from "react-router-dom";
 import Chip from "@mui/material/Chip";
 import MovieScrollList from "../movieScrollList";
 import style from "../../css/style.css";
+import VerticalScrollBox from "../verticalScrollBox";
 
 const PersonDetails = ({ person, credits, action }) => {
 
@@ -39,17 +40,23 @@ const chip = { margin: 0.5 };
           <CardContent className="lightCard">
             <Typography variant="h6" component="p">
               <p>Name: {person.name}</p>
-              {person.also_known_as.length > 0 ? <p>Also known as: {person.also_known_as.map(g => (<>{g}, </>))}</p> : <></>}
-              <div className="verticalScroll">Biography: {person.biography ? person.biography : "None Specified"}</div>
-              <p>Date of Birth: {person.birthday ? person.birthday : "None Specified"}</p>
-              <p>Died on: {person.deathday ? person.deathday : "Currently Alive"}</p>
-              <p>Gender: {person.gender === 0 ? "Unspecified" : person.gender === 1 ? "Female" : person.gender === 2 ? "Male" : "Non-Binary"}</p>
-              <p>Homepage: {person.homepage ? person.homepage : "None Specified"}</p>
-              <p>Known for department: {person.known_for_department ? person.known_for_department : "None Specified"}</p>
-              <p>Born in: {person.place_of_birth ? person.place_of_birth : "None Specified"}</p>
-              <p>Popularity: {person.popularity}</p>
-              </Typography>
-            </CardContent>
+              <VerticalScrollBox>
+                {person.also_known_as.length > 0 ? <p>Also known as: {person.also_known_as.map(g => (<>{g}, </>))}</p> : <></>}
+              </VerticalScrollBox>
+
+              <VerticalScrollBox>
+                Biography: {person.biography ? person.biography : "None Specified"}
+              </VerticalScrollBox>
+
+              <p>Date of Birth: {person.birthday ? person.birthday : "None Specified"} <br/>
+              Died on: {person.deathday ? person.deathday : "Currently Alive"} <br/>
+              Gender: {person.gender === 0 ? "Unspecified" : person.gender === 1 ? "Female" : person.gender === 2 ? "Male" : "Non-Binary"} <br/>
+              Homepage: {person.homepage ? person.homepage : "None Specified"} <br/>
+              Known for department: {person.known_for_department ? person.known_for_department : "None Specified"} <br/>
+              Born in: {person.place_of_birth ? person.place_of_birth : "None Specified"} <br/>
+              Popularity: {person.popularity}</p>
+            </Typography>
+          </CardContent>
 
           <CardContent className="darkCard">
             <MovieScrollList movies={credits.cast} action={action}></MovieScrollList>
