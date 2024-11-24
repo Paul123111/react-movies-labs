@@ -40,6 +40,17 @@
 
 }
 
+.verticalStack {
+  /* overflow-x: hidden;
+  overflow-y: hidden;
+  display: flex;
+  flex-flow: row;
+  flex-wrap: nowrap;
+  flex-direction: row;
+  width: 100%; */
+}
+
+
 .responsiveImage {
   width: 100%;
   aspect-ratio: 9/16;

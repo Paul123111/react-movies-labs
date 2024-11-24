@@ -5,7 +5,7 @@ import MovieList from "../movieList";
 import Grid from "@mui/material/Grid2";
 import { Pagination } from "@mui/material";
 
-function MovieListPageTemplate({ movies, title, action }) {
+function MovieListPageTemplate({ movies, credits, title, action }) {
   const [nameFilter, setNameFilter] = useState("");
   const [genreFilter, setGenreFilter] = useState("0");
   const genreId = Number(genreFilter);
@@ -15,6 +15,8 @@ function MovieListPageTemplate({ movies, title, action }) {
 
   const [sortBy, setSortBy] = useState("popularity");
 
+  const [overviewFilter, setOverviewFilter] = useState("");
+
   let displayedMovies = movies
     .filter((m) => {
       return m.title.toLowerCase().search(nameFilter.toLowerCase()) !== -1;
@@ -23,6 +25,7 @@ function MovieListPageTemplate({ movies, title, action }) {
       return m.vote_average > ratingsID;
     })
     .filter((m) => {
+      //console.log(m.vote_average);
       return genreId > 0 ? m.genre_ids.includes(genreId) : true;
     })
     .sort((m, n) => {
@@ -34,13 +37,18 @@ function MovieListPageTemplate({ movies, title, action }) {
         case "releaseDate": return m.date > n.date ? 1 : -1;
         default: return m.popularity < n.popularity ? 1 : -1;
       }
+    })
+    .filter((m) => {
+      //console.log(m.vote_average);
+      return m.overview.toLowerCase().search(overviewFilter.toLowerCase()) !== -1; // movie list doesn't have production_company ?.map((production_company) => {return production_company.name.toLowerCase().search(companyFilter.toLowerCase()) !== -1});
     });
 
   const handleChange = (type, value) => {
     if (type === "name") setNameFilter(value);
     else if (type === "ratings") setRatingsFilter(value);
     else if (type === "sort") setSortBy(value);
-    else setGenreFilter(value);
+    else if (type === "genre") setGenreFilter(value);
+    else setOverviewFilter(value);
   };
 
   return (
@@ -60,6 +68,7 @@ function MovieListPageTemplate({ movies, title, action }) {
               titleFilter={nameFilter}
               genreFilter={genreFilter}
               ratingsFilter={ratingsFilter}
+              overviewFilter={overviewFilter}
               sortBy={sortBy}
             />
           </Grid>

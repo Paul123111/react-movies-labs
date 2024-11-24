@@ -59,6 +59,10 @@ export default function FilterMoviesCard(props) {
     handleChange(e, "sort", e.target.value);
   };
 
+  const handleOverviewChange = (e, props) => {
+    handleChange(e, "overview", e.target.value);
+  };
+
   return (
     <Card 
       sx={{
@@ -151,6 +155,16 @@ export default function FilterMoviesCard(props) {
           </Select>
         </FormControl>
 
+        <TextField
+            sx={{...formControl}}
+            id="overview-search"
+            label="Search overview"
+            type="search"
+            variant="filled"
+            value={props.overviewFilter}
+            onChange={handleOverviewChange}
+        />
+
       </CardContent>
       <CardMedia
         sx={{ height: 300 }}
@@ -169,6 +183,6 @@ export default function FilterMoviesCard(props) {
 }
 
 // autocomplete maybe
-// for searching, use actors beginning with t in movies for example (typing into searchbar)
+// for searching, use actors beginning with t in movies for example (typing into searchbar) - put this into movie details
 // for responive UI, just make sure new features use responsive UI (labs do by default)
 // leave components that arent working in for extra marks
