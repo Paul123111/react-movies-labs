@@ -33,18 +33,18 @@ const TemplatePersonPage = ({ person, credits, title, action }) => {
             display: "flex",
             flexWrap: "wrap",
             justifyContent: "space-around",
-          }}>
+          }} className="responsiveImage">
             <ImageList
                 sx={{
                     height: "100vh",
                 }}
                 cols={1}
             >
-            <ImageListItem key={person.profile_path} cols={1}>
-            <img
-                src={`https://image.tmdb.org/t/p/w500/${person.profile_path}`}
-                alt={person.profile_path}
-            />
+            <ImageListItem key={person.profile_path} className="responsiveImage" cols={1}>
+              <img className="responsiveImage"
+                  src={`https://image.tmdb.org/t/p/w500/${person.profile_path}`}
+                  alt={person.profile_path}
+              />
             </ImageListItem>
             </ImageList>
           </div>

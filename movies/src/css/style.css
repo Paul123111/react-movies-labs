@@ -37,3 +37,10 @@
 .movieCard {
 
 }
+
+.responsiveImage {
+  width: 100%;
+  aspect-ratio: 9/16;
+  overflow-x: hidden;
+  overflow-y: hidden;
+}
