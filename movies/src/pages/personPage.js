@@ -4,6 +4,8 @@ import { getPerson, getPersonMovieCredits } from "../api/tmdb-api";
 import { useQuery } from "react-query";
 import Spinner from '../components/spinner';
 import { useParams } from 'react-router-dom';
+import PersonListPageTemplate from "../components/templatePersonList";
+import AddToFavoritesIcon from "../components/cardIcons/addToFavorites";
 
 const PersonPage = (props) => {
   const { id } = useParams();
@@ -33,7 +35,12 @@ const PersonPage = (props) => {
     <>
       {person && credits ? (
         <>
-          <PersonDetails person={person} credits={credits}/>
+          <PersonListPageTemplate 
+          people={person} 
+          credits={credits} 
+          action={(credit) => {
+            return <AddToFavoritesIcon movie={credit} />
+        }}/>
         </>
       ) : (
         <p>Waiting for person details</p>

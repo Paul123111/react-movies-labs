@@ -32,7 +32,7 @@ export default function MovieCard({ movie, action }) {
   };
 
   return (
-    <Card className="darkCard">
+    <Card className="movieCard">
       <CardHeader className="darkCard"
         avatar={
           movie.favorite ? (

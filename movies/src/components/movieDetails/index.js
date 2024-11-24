@@ -12,7 +12,7 @@ import Drawer from "@mui/material/Drawer";
 import MovieReviews from "../movieReviews";
 import LanguageIcon from '@mui/icons-material/Language';
 import Button from "@mui/material/Button";
-import PersonList from "../personList";
+import PersonList from "../personScrollList";
 
 const root = {
     display: "flex",
@@ -80,11 +80,11 @@ const MovieDetails = ({ movie, credits }) => {  // Don't miss this!
         ))}
       </Paper>
 
-      <Paper 
+      {/* <Paper 
         component="ul" 
         sx={{...root}}
       >
-        {/* <li>
+        <li>
           <Chip label="Credits" sx={{...chip}} color="primary" />
         </li>
         {credits.cast.map((g) => (
@@ -100,25 +100,21 @@ const MovieDetails = ({ movie, credits }) => {  // Don't miss this!
               <Chip label={g.name} sx={{...chip}} />
             </Link>
           </li>
-        ))} */}
-      </Paper>
+        ))}
+      </Paper> */}
 
       <Paper>
         <Typography variant="h5" component="h3">
           Cast
         </Typography>
-        <div className="horizontalScroll">
-          {<PersonList people={credits.cast} className="horizontalScroll"></PersonList>}
-        </div>
+        <PersonList people={credits.cast}></PersonList>
       </Paper>
 
       <Paper>
         <Typography variant="h5" component="h3">
-          Cast
+          Crew
         </Typography>
-        <div className="horizontalScroll">
-          {<PersonList people={credits.crew} className="horizontalScroll"></PersonList>}
-        </div>
+        <PersonList people={credits.crew}></PersonList>
       </Paper>
 
       <Link to={`/movies/${movie.id}/recommendations`}>
