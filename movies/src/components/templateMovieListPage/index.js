@@ -5,6 +5,7 @@ import MovieList from "../movieList";
 import Grid from "@mui/material/Grid2";
 import { Pagination } from "@mui/material";
 import { Link } from "react-router-dom";
+import AppPagination from "../appPagination";
 
 function MovieListPageTemplate({ movies, credits, title, action }) {
   const [nameFilter, setNameFilter] = useState("");
@@ -18,8 +19,7 @@ function MovieListPageTemplate({ movies, credits, title, action }) {
 
   const [overviewFilter, setOverviewFilter] = useState("");
 
-  const [page, setPage] = useState("1");
-  const pageID = Number(page)
+
 
   let displayedMovies = movies
     .filter((m) => {
@@ -55,10 +55,10 @@ function MovieListPageTemplate({ movies, credits, title, action }) {
     else setOverviewFilter(value);
   };
 
-  const handlePageChange = (type, value) => {
-    console.log(type + ", " + value);
-    setPage(value);
-  };
+  // const handlePageChange = (type, value) => {
+  //   console.log(type + ", " + value);
+  //   setPage(value);
+  // };
 
   return (
     <>
@@ -85,13 +85,9 @@ function MovieListPageTemplate({ movies, credits, title, action }) {
         </Grid>
       </Grid>
 
-      <footer className="footer">
-        <Link to={`/movies/discover/${page}`}>
-          <Pagination count={10} color="primary" onChange={handlePageChange}>
-          
-          </Pagination>
-        </Link>
-      </footer>
+      {/* <footer className="footer">
+        <AppPagination page={page} setPage={setPage}/>
+      </footer> */}
       
     </>
   );

@@ -59,6 +59,20 @@
 }
 
 .footer {
+  background-color: #222222;
   display: flex;
   justify-content: center;
+  padding: 40px;
+}
+
+.MuiPaginationItem-root {
+  z-index: 3;
+  color: #fff !important;
+  background-color: blue !important;
+}
+
+.Mui-selected {
+  z-index: 3;
+  color: #fff !important;
+  background-color: red !important;
 }

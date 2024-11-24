@@ -1,14 +1,17 @@
-import React from "react";
+import {useState} from "react";
 import { getUpcomingMovies } from "../api/tmdb-api";
 import PageTemplate from '../components/templateMovieListPage';
 import { useQuery } from 'react-query';
 import Spinner from '../components/spinner';
 //import AddToFavoritesIcon from '../components/cardIcons/addToFavorites';
 import AddToPlaylistIcon from '../components/cardIcons/addToPlaylist';
+import AppPagination from "../components/appPagination";
 
 const UpcomingMoviesPage = (props) => {
 
-  const {  data, error, isLoading, isError }  = useQuery('movie', getUpcomingMovies)
+  const [page, setPage] = useState(1);
+
+  const {  data, error, isLoading, isError }  = useQuery(['movie', {page: page}], getUpcomingMovies)
 
   if (isLoading) {
     return <Spinner />
@@ -25,13 +28,18 @@ const UpcomingMoviesPage = (props) => {
   const addToFavorites = (movieId) => true 
 
   return (
-    <PageTemplate
-      title="Upcoming Movies"
-      movies={movies}
-      action={(movie) => {
-        return <AddToPlaylistIcon movie={movie} />
-      }}
-    />
+    <>
+      <PageTemplate
+        title="Upcoming Movies"
+        movies={movies}
+        action={(movie) => {
+          return <AddToPlaylistIcon movie={movie} />
+        }}
+      />
+      <footer className="footer">
+        <AppPagination page={page} setPage={setPage}/>
+      </footer>
+    </>
   );
 };
 export default UpcomingMoviesPage;
