@@ -57,7 +57,7 @@ Favourites and watchlist would require authentication, but I ran out of time due
 
 ## Independent learning (If relevant).
 
-For Firebase, I used Youtube tutorials, the firebase documentation, and looking up error messages on Google to learn how to implement authentication. I didn't get to complete everything, but I did get the user sign-up and log-in done.
+For Firebase, I used Youtube tutorials, the firebase documentation, and looking up error messages on Google to learn how to implement authentication. I didn't get to complete everything, but I did get the user sign-up and log-in done. According to the documentation, the firebase app is meant to have the initialiser to run, it's not me leaking an API key.
 
 For pagination, I used the Youtube tutorials and the material UI pagination documentation for styling (found classes to override) and linking the pagination element to the TMDB API pages.
 
